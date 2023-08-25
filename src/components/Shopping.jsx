@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import { MyContext } from '../context';
 import { observer } from 'mobx-react'
-import { runInAction } from 'mobx'
 
 function Shopping() {
   const { shopping } = useContext(MyContext)
 
   const handleAppendGood = (id) => {
-    runInAction(() => {
-      shopping.appendGoodToCart(id)
-    })
+    shopping.appendGoodToCart(id)
   }
 
   return (

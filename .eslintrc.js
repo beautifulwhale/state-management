@@ -22,5 +22,6 @@ module.exports = {
     plugins: ["react"],
     rules: {
         "import/no-anonymous-default-export": "off",
+        "react/prop-types": "off"
     },
 };
