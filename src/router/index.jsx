@@ -1,17 +1,35 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
 import Teams from '../pages/teams/Teams';
 import Team from '../pages/teams/Team';
-import About from '../pages/About';
+import Home from '../components/Home';
+import About from '../components/About';
+import Shopping from '../components/Shopping';
+import Count from '../pages/count';
 
 const routes = [
   {
+    path: '/home',
+    element: <Home />
+  },
+  {
+    path: '/shopping',
+    element: <Shopping />
+  },
+  {
+    path: '/count',
+    element: <Count />
+  },
+  {
     path: '/teams',
     element: <Teams />,
+    exact: true,
     children: [
       {
-        path: '/:teamId',
-        element: <Team />
+        path: ':teamId',
+        element: <Team />,
+        loader: async ({ params }) => {
+          console.log('params', params);
+        }
       }
     ]
   },
@@ -21,25 +39,4 @@ const routes = [
   }
 ];
 
-// 
-const RecursiveRoutes = ({ routes }) => {
-  return <React.Fragment>
-    {routes.map(route => (
-      <Route key={route.path} path={route.path} element={route.element}>
-        {route.children && <RecursiveRoutes routes={route.children} />}
-      </Route>
-    ))}
-  </React.Fragment>
-};
-
-const Router = () => {
-  return (
-    <React.Suspense fallback={<div>loading...</div>}>
-      <Routes>
-        <Route path='/' element={<RecursiveRoutes routes={routes} />} />
-      </Routes>
-    </React.Suspense>
-  );
-};
-
-export default Router;
+export default routes;
