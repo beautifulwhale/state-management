@@ -1,5 +1,5 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom"
-import React from 'react'
+import { useLocation, useNavigate, Outlet } from "react-router-dom"
+import React, { useState } from 'react'
 
 export default function Teams() {
   const teamList = [
@@ -7,12 +7,16 @@ export default function Teams() {
     { teamName: '巴塞罗那', teamId: '2', price: 4000 },
     { teamName: '曼城', teamId: '3', price: 2000 },
   ]
+  const [count, setCount] = useState(0)
 
   const location = useLocation()
   const navigate = useNavigate()
+  // const outlet = useOutlet()
 
   const goToDetail = (team) => {
-    navigate(`/teams/${team.teamId}`)
+    navigate(`/teams/${team.teamId}`, {
+      state: team
+    })
   }
 
   function render() {
@@ -32,7 +36,7 @@ export default function Teams() {
   return <>
     <div>
       {
-        location.pathname !== '/teams' ? <Outlet /> : render()
+        location.pathname !== '/teams' ? <Outlet context={[count, setCount]} /> : render()
       }
     </div>
   </>

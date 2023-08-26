@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <h1>Home Page</h1>
-      <Link to="/about">About</Link>
+      <Link to="/about?name=xiaohong&age=20">About</Link>
       <HomeChild />
     </div>
   );
