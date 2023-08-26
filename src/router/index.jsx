@@ -5,6 +5,8 @@ import Home from '../components/Home';
 import About from '../components/About';
 import Shopping from '../components/Shopping';
 import Count from '../pages/count';
+import Player from '../pages/teams/Player'
+import { Link, json } from 'react-router-dom';
 
 const routes = [
   {
@@ -29,9 +31,19 @@ const routes = [
         element: <Team />,
         loader: async ({ params }) => {
           console.log('params', params);
-        }
-      }
+          return json({ name: '尤文图斯', subName: '拜仁', teamId: params.teamId })
+        },
+        handle: { crumb: () => <Link to='/home'>toHome</Link> }
+      },
     ]
+  },
+  {
+    path: '/player/:player',
+    element: <Player />,
+    loader: async ({ params }) => {
+      return json({ name: '切尔西', subName: '利物浦', playerId: params.playerId })
+    },
+    handle: { crumb: (data) => <span>{data.name} / {data.subName} / {data.playerId}</span> }
   },
   {
     path: '/about',
