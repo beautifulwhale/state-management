@@ -23,6 +23,7 @@ module.exports = {
     rules: {
         "import/no-anonymous-default-export": "off",
         "react/prop-types": "off",
-        "no-debugger": "off"
+        "no-debugger": "off",
+        "no-unused-vars": "off"
     },
 };

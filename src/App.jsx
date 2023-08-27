@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 import TodoList from './store/todo'
 import shopping from './store/shopping';
+import counts from './store/count';
 import { MyContext } from './context'
 import routes from './router';
 
@@ -13,7 +14,7 @@ function App() {
   }
 
   return (
-    <MyContext.Provider value={{ TodoList, shopping }}>
+    <MyContext.Provider value={{ TodoList, shopping, counts }}>
       {elements}
     </MyContext.Provider>
   );
