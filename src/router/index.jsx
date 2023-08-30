@@ -7,6 +7,7 @@ import Shopping from '../components/Shopping';
 import Count from '../pages/count';
 import Player from '../pages/teams/Player'
 import ReduxCount from '../pages/redux-count/index'
+import Animal from '../pages/animal';
 import { Link, json } from 'react-router-dom';
 
 const routes = [
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/reduxcount',
     element: <ReduxCount />
+  },
+  {
+    path: '/animal',
+    element: <Animal />
   },
   {
     path: '/teams',
