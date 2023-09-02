@@ -17,4 +17,5 @@ export const store = configureStore({
             },
         }).concat(thunk);
     },
+    devTools: process.env.NODE_ENV !== "production"
 });
